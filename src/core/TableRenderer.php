@@ -1,10 +1,6 @@
 <?php
 namespace Core;
-
-interface ITableRenderer
-{
-	static function render(array $data): void;
-}
+use Core\Interfaces\ITableRenderer;
 
 class TableRenderer implements ITableRenderer
 {

@@ -1,5 +1,6 @@
 <?php
 namespace Core\Orm;
+use Core\Orm\Interfaces\IDBImport;
 use PDO;
 
 class DBImport implements IDBImport
