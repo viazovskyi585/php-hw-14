@@ -1,6 +1,5 @@
 <?php
 namespace Core\Orm;
-use Core\Orm\Interfaces\IDBImport;
 use PDO;
 
 # INSERT INTO `users` (`id`, `name`, `age`, `email`) VALUES (NULL, 'Kate', '20', 'test2@example.com');
@@ -19,9 +18,10 @@ class DBImport implements IDBImport
 		$query .= implode(", ", array_keys($data));
 		$query .= ") VALUES (";
 		$query .= implode(", ", array_fill(0, count($data), "?"));
+		$query .= ")";
 		$dbh = $this->connector->connect();
 		$sth = $dbh->prepare($query);
-		$sth->execute();
+		$sth->execute(array_values($data));
 		$sth->fetchAll(PDO::FETCH_ASSOC);
 	}
 }
