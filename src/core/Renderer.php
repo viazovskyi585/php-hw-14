@@ -21,4 +21,9 @@ class Renderer
 		$pageContent = self::renderView($viewName, $data);
 		self::renderLayout($pageTitle, $pageContent);
 	}
+
+	public static function renderHTML(string $title, string $html): void
+	{
+		self::renderLayout($title, $html);
+	}
 }
