@@ -2,7 +2,6 @@
 namespace Core\Orm;
 use PDO;
 
-# INSERT INTO `users` (`id`, `name`, `age`, `email`) VALUES (NULL, 'Kate', '20', 'test2@example.com');
 class DBImport implements IDBImport
 {
 	private DBConnector $connector;
