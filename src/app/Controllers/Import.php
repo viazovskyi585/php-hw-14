@@ -11,6 +11,10 @@ class Import
 		Renderer::render('pages/import', 'Import');
 	}
 
+	public function importMany()
+	{
+		Renderer::render('pages/import-many', 'Import Many');
+	}
 	public function create()
 	{
 		$data = [
@@ -21,5 +25,16 @@ class Import
 		$import = new UsersModel();
 		$import->importUser($data);
 		Renderer::render('pages/success', 'Success');
+	}
+
+	public function createMany()
+	{
+		$input = file_get_contents('php://input');
+		$data = json_decode($input, true);
+		$users = $data['users'];
+		$import = new UsersModel();
+		$import->importUsers($users);
+		header('Content-Type: application/json');
+		echo json_encode(['success' => true]);
 	}
 }
